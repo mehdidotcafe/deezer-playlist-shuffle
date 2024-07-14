@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Deezer Playlist Shuffle",
+  "description": "Shuffle your Deezer playlists without hassle",
+  "version": "1.0",
+  "action": {
+    "default_popup": "html/popup.html"
+  },
+  "icons": {
+    "16": "images/icons/deezer-playlist-shuffle-16x16.png",
+    "32": "images/icons/deezer-playlist-shuffle-32x32.png",
+    "48": "images/icons/deezer-playlist-shuffle-48x48.png",
+    "128": "images/icons/deezer-playlist-shuffle-128x128.png"
+  },
+  "content_scripts": [
+    {
+      "js": ["build/app.js"],
+      "matches": [
+        "https://www.deezer.com/*",
+        "https://deezer.com/*"
+      ]
+    }
+  ]
+}

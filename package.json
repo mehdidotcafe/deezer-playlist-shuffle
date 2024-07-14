@@ -1,0 +1,16 @@
+{
+  "name": "deezer-playlist-shuffle",
+  "version": "1.0.0",
+  "description": "Shuffle your Deezer playlists without hassle",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "esbuild src/index.js --bundle --watch --sourcemap --target=es6 --outfile=build/app.js",
+    "build": "esbuild src/index.js --bundle --minify --target=es6 --outfile=build/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mehdidotcafe",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.23.0"
+  }
+}
