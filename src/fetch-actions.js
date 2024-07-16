@@ -1,6 +1,6 @@
 import { postFetch } from "./post-fetch";
 
-export const sendPlaylistShuffle = (getApiToken, playlistId) => (order) => {
+export const sendShuffledPlaylist = (getApiToken, playlistId) => (order) => {
   const body = {
     playlist_id: playlistId,
     position: 0,

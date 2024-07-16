@@ -1,6 +1,6 @@
 import { createAndAppendShuffleButton } from './create-and-append-shuffle-button.js';
 import { postFetch } from './post-fetch.js';
-import { sendPlaylistShuffle, fetchPlaylist } from './fetch-actions.js';
+import { sendShuffledPlaylist, fetchPlaylist } from './fetch-actions.js';
 import { onElementAvailable } from './on-element-available.js';
 import { shuffleArray } from './shuffle-array.js';
 
@@ -15,22 +15,27 @@ postFetch(apiToken, 'deezer.getUserData', {})
     apiToken = userData.results.checkForm
   })
 
-const playlistShuffle = () => {
+const shufflePlaylist = () => {
   const playlistId = location.pathname.split("/").pop();
 
   return fetchPlaylist(getApiToken, playlistId)
-    .then(res => res.results.SONGS.data.map(song => song.SNG_ID))
+    .then(res => {
+      console.log('SONGS', res.results.SONGS.data)
+
+      return res.results.SONGS.data.map(song => song.SNG_ID)
+    })
     .then(shuffleArray)
-    .then(sendPlaylistShuffle(getApiToken, playlistId))
+    .then(sendShuffledPlaylist(getApiToken, playlistId))
 }
 
 const pageReload = () => {
+  console.log('in page reload')
   window.location.reload();
 }
 
 const PEN_ICON_SELECTOR = '[data-testid="PenIcon"]';
 onElementAvailable(PEN_ICON_SELECTOR, () => {
-  createAndAppendShuffleButton(PEN_ICON_SELECTOR, () => playlistShuffle().then(() => {
+  createAndAppendShuffleButton(PEN_ICON_SELECTOR, () => shufflePlaylist().then(() => {
     pageReload();
   }));
 });
