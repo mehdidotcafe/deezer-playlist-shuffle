@@ -1,3 +1,5 @@
+import { isOnDeezerPlaylistPage } from "./is-on-deezer-playlist-page.js";
+
 export function onElementAvailable(selector, callback) {
   const observer = new MutationObserver(mutations => {
     if (document.querySelector(selector)) {
@@ -6,17 +8,13 @@ export function onElementAvailable(selector, callback) {
     }
   });
 
-  if (isOnPlaylistPage(location.pathname)) {
+  if (isOnDeezerPlaylistPage(location.href)) {
     observer.observe(document.body, { childList: true, subtree: true });
   }
 
   window.navigation.addEventListener("navigate", (e) => {
-    if (isOnPlaylistPage(e.destination.url)) {
+    if (isOnDeezerPlaylistPage(e.destination.url)) {
       observer.observe(document.body, { childList: true, subtree: true });
     }
   })
-}
-
-const isOnPlaylistPage = (url) => {
-  return url.includes("/playlist/");
 }
