@@ -1,8 +1,9 @@
-import { isOnDeezerPlaylistPage } from "../is-on-deezer-playlist-page"
+import { isOnDeezer, isOnDeezerPlaylistPage } from "../is-on-deezer-playlist-page"
 
 const chipStatusInactiveElements = document.querySelectorAll('.chip-status--inactive')
 const chipStatusActiveElements = document.querySelectorAll('.chip-status--active')
 const buttonShuffle = document.getElementById('button-shuffle')
+const chipStatusInactiveLabelReason = document.getElementById('chip-status__label--inactive__reason')
 
 buttonShuffle.addEventListener('click', function() {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -26,9 +27,13 @@ const updateActiveChipStatusFromUrl = (url) => {
   if (isOnDeezerPlaylistPage(url)) {
     setActiveChipStatus()
     buttonShuffle.removeAttribute('disabled')
+    buttonShuffle.setAttribute('title', 'Shuffle the current playlist')
   } else {
     setInactiveChipStatus()
     buttonShuffle.setAttribute('disabled', true)
+    buttonShuffle.removeAttribute('title')
+
+    chipStatusInactiveLabelReason.innerHTML = isOnDeezer(url) ? ' - Not on a Playlist' : ' - Not on Deezer'
   }
 }
 

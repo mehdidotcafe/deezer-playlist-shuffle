@@ -21,9 +21,11 @@ button {
 }
 
 #button-shuffle {
+  margin-top: 12px;
   border-radius: 50%;
   padding: 2%;
-  background-color: #ffffff;box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 }
 
 #button-shuffle:disabled {
@@ -48,9 +50,9 @@ button {
 }
 
 .chip {
-  position: absolute;
-  top: 8px;
-  left: 8px;
+  margin-top: -6px;
+  margin-left: -6px;
+  align-self: flex-start;
   font-size: 14px;
   display: flex;
   padding: 2px 8px;
