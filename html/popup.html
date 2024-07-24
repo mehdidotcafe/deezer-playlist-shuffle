@@ -5,18 +5,27 @@
     <link rel="stylesheet" href="../css/popup.css">
   </head>
   <body class="popup">
-    <div class="chip">
-      <div id="chip-status__light--active" class="chip-status__light chip-status--active"></div>
-      <div id="chip-status__light--inactive" class="chip-status__light chip-status--inactive"></div>
-      <span>
-        <span id="chip-status__label--active" class="chip-status__label chip-status--active">Active</span>
-        <span id="chip-status__label--inactive" class="chip-status__label chip-status--inactive">Inactive <span id="chip-status__label--inactive__reason"></span></span>
-      </span>
-    </div>
-    <button id="button-shuffle" type="submit">
-      <img src="../images/deezer-playlist-shuffle.svg" alt="Shuffle the current playlist" width="109" height="109" class="button-shuffle__img"/>
-    </button>
-    <h1 id="title">Deezer Playlist Shuffle</h1>
+    <header>
+      <div class="chip">
+        <div id="chip-status__light--active" class="chip-status__light chip-status--active"></div>
+        <div id="chip-status__light--inactive" class="chip-status__light chip-status--inactive"></div>
+        <span>
+          <span id="chip-status__label--active" class="chip-status__label chip-status--active">Active</span>
+          <span id="chip-status__label--inactive" class="chip-status__label chip-status--inactive">Inactive <span id="chip-status__label--inactive__reason"></span></span>
+        </span>
+      </div>
+    </header>
+    <main>
+      <button id="button-shuffle" type="submit">
+        <img src="../images/deezer-playlist-shuffle.svg" alt="Shuffle the current playlist" width="109" height="109" class="button-shuffle__img"/>
+      </button>
+      <h1 id="title">Deezer Playlist Shuffle</h1>
+    </main>
+    <footer>
+      <a href="https://mehdi.cafe" target="_blank">
+        <img src="../images/mehdidotcafe.svg" height="32" width="32" alt="mehdidotcafe logo" />
+      </a>
+    </footer>
     <script src="../build/popup.js"></script>
   </body>
 </html>
